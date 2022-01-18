@@ -1,18 +1,15 @@
 package com.example.demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author 
@@ -21,19 +18,24 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="child")
-public class Child {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Child implements Serializable {
 	
 	@Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "parent_id", nullable = false)
+
+    @Transient
+    private Long parentId;
+
+	@ManyToOne
     @JsonIgnore
     private Parent parent;
-    
+
     @Column(name="paid_amount")
     private Integer paidAmount;
+
 
 }

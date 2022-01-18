@@ -1,8 +1,6 @@
 package com.example.demo;
 
-/**
- * Created by sumit.nagariya on 15/07/20.
- */
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ParameterBuilder;

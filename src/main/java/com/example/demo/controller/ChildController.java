@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ParentDto;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,12 +24,13 @@ public class ChildController {
 	private ParentService childService;
 	
 	/**\
-	 * 
+	 * fetch child details for parentId
 	 * @param parentId
 	 * @return
 	 */
 	@GetMapping("/{parentId}")
-	public Parent getChildData(@PathVariable("parentId") Long parentId) {
+	@ApiOperation("fetch child details for parent.Reponse will contain in form of common parent data with child details.")
+	public ParentDto getChildData(@PathVariable("parentId") Long parentId) {
 		
 		return childService.getChildData(parentId);
 	}

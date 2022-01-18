@@ -10,7 +10,4 @@ import com.example.demo.entity.Parent;
 
 @Repository
 public interface ChildRepository extends JpaRepository<Child, Long> {
-
-	List<Child> findByParent(Parent parent);
-
 }
